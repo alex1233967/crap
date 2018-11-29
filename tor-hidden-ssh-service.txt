@@ -1,0 +1,19 @@
+# install to server
+$ apt-get install tor torsocks
+
+# bind ssh to tor service port 80
+# /etc/tor/torrc
+SocksPolicy accept 127.0.0.1
+SocksPolicy accept 192.168.0.0/16
+Log notice file /var/log/tor/notices.log
+RunAsDaemon 1
+HiddenServiceDir /var/lib/tor/ssh_hidden_service/
+HiddenServicePort 80 127.0.0.1:22
+PublishServerDescriptor 0
+$ /etc/init.d/tor start
+$ cat /var/lib/tor/ssh_hidden_service/hostname
+3l5zstvt1zk5jhl662.onion
+
+# ssh connect from client
+$ apt-get install torsocks
+$ torsocks ssh login@3l5zstvt1zk5jhl662.onion -p 80

