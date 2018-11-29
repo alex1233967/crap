@@ -1,0 +1,3 @@
+[submodule "scripts/racer"]
+	path = scripts/racer
+	url = git@github.com:sakurity/racer.git
