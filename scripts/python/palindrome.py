@@ -2,14 +2,14 @@
 # --------------
 # User Instructions
 #
-# Write a function, longest_subpalindrome_slice(text) that takes 
-# a string as input and returns the i and j indices that 
-# correspond to the beginning and end indices of the longest 
-# palindrome in the string. 
+# Write a function, longest_subpalindrome_slice(text) that takes
+# a string as input and returns the i and j indices that
+# correspond to the beginning and end indices of the longest
+# palindrome in the string.
 #
 # Grading Notes:
-# 
-# You will only be marked correct if your function runs 
+#
+# You will only be marked correct if your function runs
 # efficiently enough. We will be measuring efficency by counting
 # the number of times you access each string. That count must be
 # below a certain threshold to be marked correct.
@@ -28,7 +28,7 @@ def longest_subpalindrome_slice(text):
                 start -= 1
                 end += 1
             candidates.append((start, end))
-    
+
     return max(candidates, key=lambda x: x[1] - x[0])
 
 
@@ -39,9 +39,10 @@ def test():
     assert L('RacecarX') == (0, 7)
     assert L('Race carr') == (7, 9)
     assert L('') == (0, 0)
-    assert L('something rac e car going') == (8,21)
+    assert L('something rac e car going') == (8, 21)
     assert L('xxxxx') == (0, 5)
     assert L('Mad am I ma dam.') == (0, 15)
     return 'tests pass'
+
 
 print test()
